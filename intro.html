@@ -36,6 +36,24 @@
             margin: 0 auto;
         }
 
+        /* Main intro section - non-accordion */
+        .intro-section {
+            margin-bottom: 32px;
+        }
+
+        .intro-section h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 16px;
+        }
+
+        .intro-section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Accordion styles */
         .accordion-item {
             border-bottom: 1px solid var(--border);
         }
@@ -50,14 +68,14 @@
             border: none;
             padding: 16px 0;
             font-family: 'Raleway', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
             text-align: left;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--text-primary);
             transition: color 0.2s ease;
         }
 
@@ -66,9 +84,9 @@
         }
 
         .accordion-icon {
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--teal);
             transition: transform 0.3s ease;
         }
 
@@ -79,18 +97,16 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease;
         }
 
         .accordion-item.active .accordion-content {
             max-height: 500px;
-            padding-bottom: 20px;
         }
 
         .accordion-text {
-            font-size: 16px;
-            color: var(--text-primary);
-            line-height: 1.7;
+            padding: 0 0 20px 0;
+            color: var(--text-secondary);
         }
 
         .accordion-text p {
@@ -100,41 +116,24 @@
         .accordion-text p:last-child {
             margin-bottom: 0;
         }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 16px;
-            }
-
-            .accordion-header {
-                font-size: 16px;
-                padding: 14px 0;
-            }
-
-            .accordion-text {
-                font-size: 15px;
-            }
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="accordion-item">
-        <button class="accordion-header" onclick="toggleAccordion(this)">
-            <span>Growing Innovation Capability in Teams</span>
-            <span class="accordion-icon">+</span>
-        </button>
-        <div class="accordion-content">
-            <div class="accordion-text">
-                <p>This is my PhD artefact, based on research exploring how to grow innovation capability in teams. There are three parts to this.</p>
-                <p>First, the mythic container. I use Hautū Waka as a narrative structure to hold the team together. This helps people make sense of the process of wayfinding through a 'dancing landscape'. It also provides context for the tools and muscles needed to grow innovation capability.</p>
-                <p>Second, the tools. These are adapted and adopted from existing practice, making the narrative real and concrete for use in work situations.</p>
-                <p>Third, the muscles. These are collective dispositions that need to be developed — they enable a team's ability to find a way through uncertain, complex work.</p>
-            </div>
-        </div>
+
+    <!-- Main intro - not an accordion -->
+    <div class="intro-section">
+        <h1>Growing Innovation Capability in Teams</h1>
+        <p>Kia ora, welcome to my PhD artefact. This explores growing innovation capability in teams. It has five layers.</p>
+        <p>First, Hautū Waka — a wayfinding narrative developed by Rereata Makiha, Roimata Taniwha-Pao'o and Ayla Hoeta. It holds the team and the work, helping people navigate when the landscape shifts beneath them.</p>
+        <p>Second, tools — adapted from existing practice, grounding each stage in concrete action.</p>
+        <p>Third, muscles — collective dispositions that emerge through use, enabling teams to move through uncertain, complex work. Framed through Te Whare Tapa Whā.</p>
+        <p>Fourth, the mycorrhizal network — the reading, watching and listening that fed this work. The underground connections that made this vision possible.</p>
+        <p>Fifth, the tap root — my positionality. Why I care, where I stand, how I see. The ground everything else grows from.</p>
     </div>
 
+    <!-- Why Hautū Waka - accordion -->
     <div class="accordion-item">
         <button class="accordion-header" onclick="toggleAccordion(this)">
             <span>Why Hautū Waka</span>
@@ -148,19 +147,6 @@
         </div>
     </div>
 
-    <div class="accordion-item">
-        <button class="accordion-header" onclick="toggleAccordion(this)">
-            <span>The Three Sections</span>
-            <span class="accordion-icon">+</span>
-        </button>
-        <div class="accordion-content">
-            <div class="accordion-text">
-                <p><strong>The Process</strong> — Click any stage to explore it. The six stages also work as states you move between as conditions require — sometimes progressing, sometimes cycling back. The arrows show possible movements, not prescribed sequences.</p>
-                <p><strong>The Tools</strong> — Coming soon.</p>
-                <p><strong>The Muscles</strong> — Coming soon.</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
