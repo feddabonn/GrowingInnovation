@@ -36,24 +36,6 @@
             margin: 0 auto;
         }
 
-        /* Main intro section - non-accordion */
-        .intro-section {
-            margin-bottom: 32px;
-        }
-
-        .intro-section h1 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--teal);
-            margin-bottom: 16px;
-        }
-
-        .intro-section p {
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-
-        /* Accordion styles */
         .accordion-item {
             border-bottom: 1px solid var(--border);
         }
@@ -68,14 +50,14 @@
             border: none;
             padding: 16px 0;
             font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
             text-align: left;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-primary);
             transition: color 0.2s ease;
         }
 
@@ -84,9 +66,9 @@
         }
 
         .accordion-icon {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: var(--teal);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-secondary);
             transition: transform 0.3s ease;
         }
 
@@ -97,24 +79,46 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 500px;
+            max-height: 3000px;
+            padding-bottom: 20px;
         }
 
         .accordion-text {
-            padding: 0 0 20px 0;
-            color: var(--text-secondary);
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.7;
         }
 
         .accordion-text p {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .accordion-text p:last-child {
             margin-bottom: 0;
+        }
+
+        .section-heading {
+            font-weight: 600;
+            color: var(--teal);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .accordion-header {
+                font-size: 16px;
+                padding: 14px 0;
+            }
+
+            .accordion-text {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -122,18 +126,25 @@
 
 <div class="container">
 
-    <!-- Main intro - not an accordion -->
-    <div class="intro-section">
-        <h1>Growing Innovation Capability in Teams</h1>
-        <p>Kia ora, welcome to my PhD artefact. This explores growing innovation capability in teams. It has five layers.</p>
-        <p>First, Hautū Waka — a wayfinding narrative developed by Rereata Makiha, Roimata Taniwha-Pao'o and Ayla Hoeta. It holds the team and the work, helping people navigate when the landscape shifts beneath them.</p>
-        <p>Second, tools — adapted from existing practice, grounding each stage in concrete action.</p>
-        <p>Third, muscles — collective dispositions that emerge through use, enabling teams to move through uncertain, complex work. Framed through Te Whare Tapa Whā.</p>
-        <p>Fourth, the mycorrhizal network — the reading, watching and listening that fed this work. The underground connections that made this vision possible.</p>
-        <p>Fifth, the tap root — my positionality. Why I care, where I stand, how I see. The ground everything else grows from.</p>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Growing Innovation Capability in Teams</span>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="accordion-text">
+                <p>This PhD explored how teams grow the capability to innovate — to find their way through conditions where the landscape shifts beneath them.</p>
+                <p>Three things seem to matter. First, a shared narrative that helps people locate themselves and gives direction when certainty isn't available. Second, tools that make the narrative real in day-to-day work. Third, collective dispositions — muscles — that develop through practice and enable teams to use the tools well.</p>
+                <p>This artefact has five layers:</p>
+                <p><span class="section-heading">Hautū Waka</span> — a Māori wayfinding framework developed by Rereata Makiha, Roimata Taniwha-Pao'o and Ayla Hoeta at Auckland Co-design Lab. Six stages that also work as states — you move between them as conditions require, sometimes progressing, sometimes cycling back. It holds the team and the work, providing shared metaphor, language and meaning-making for wayfinding in uncertainty, innovation, and change.</p>
+                <p><span class="section-heading">Tools</span> — twelve tools to help teams apply the Hautū Waka stages/states to their own contexts of innovation and/or change in uncertainty. Organised into five groups: The Inner Landscape (surfacing what's hard to name), Reading the System (understanding context and conditions), Holding Direction (narrative and decision), Learning (capturing and processing), and Tending the Whole (holistic check-in and closure). Adapted from existing practice, they ground the narrative in concrete action. This is not a definitive list, and you will find that your existing tools can be used to fit the narrative.</p>
+                <p><span class="section-heading">Muscles</span> — twelve collective muscles needed to grow innovation and/or change capability in teams working in uncertainty. Framed through Te Whare Tapa Whā and organised across Whenua (foundation), Taha Tinana (physical), Taha Wairua (spiritual), Taha Whānau (social), and Taha Hinengaro (mental/emotional). They aren't built through training — they emerge through the collective work of practising Hautū Waka together.</p>
+                <p><span class="section-heading">The Mycorrhizal Network</span> — the reading, watching and listening that fed this work. Pacific wayfinding traditions, complexity theory, relational approaches to capability, indigenous knowledge systems. The underground connections that made this possible.</p>
+                <p><span class="section-heading">The Tap Root</span> — my positionality. As Tangata Tiriti, I chose to work with knowledge from this place, Aotearoa New Zealand. Why I care, where I stand, how I see. The ground everything else grows from.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Why Hautū Waka - accordion -->
     <div class="accordion-item">
         <button class="accordion-header" onclick="toggleAccordion(this)">
             <span>Why Hautū Waka</span>
@@ -141,8 +152,11 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-text">
-                <p>Hautū Waka is a Māori wayfinding framework developed at Auckland Co-design Lab by Roimata Taniwha-Pao'o and Ayla Hoeta, with guidance from Matua Rereata Makiha. It's designed for situations where you can't know the path before walking it.</p>
-                <p>I chose it for three reasons. First, it assumes complexity — you read signs, make choices, possibly return. The waka can go forward, around, or back. Second, the framework is recognised rather than taught. For Māori and Pacific peoples, wayfinding is already familiar; for others, journeying is universal enough to carry meaning without requiring methodology training. Third, as Tangata Tiriti, I wanted to work with knowledge from this place, Aotearoa New Zealand. There is much wisdom in these lands, waters, and skies, and I am grateful for the perspective I have been allowed access to.</p>
+                <p>Scott Page describes three types of landscapes for understanding problems. Simple landscapes have clear paths — you can see where you're going and follow established routes. Rugged landscapes are difficult but navigable — like heart surgery or launching rockets, they're complicated problems solvable through established procedures if you have the right expertise. Dancing landscapes are different. They shift constantly as multiple actors respond to each other, creating conditions that change even as you move through them. Complex problems aren't harder versions of complicated ones; they're a different kind, requiring navigation rather than execution.</p>
+                <p>The ocean is the most dancing of landscapes. Currents shift, weather changes. The navigator can't follow a predetermined route because the conditions that existed when planning began are not the conditions encountered en route. Polynesian wayfinders developed practices for exactly this — reading signs continuously, adjusting course, sometimes returning, always in relationship with a world that won't hold still.</p>
+                <p>Hautū Waka draws from these Pacific navigation traditions. It's designed for situations where you can't know the path before walking it — where the landscape itself responds to your movement, where diverse and connected actors create conditions no one fully controls. This is the terrain of innovation.</p>
+                <p>Three things stand out about Hautū Waka. First, as a design process, it assumes complexity — you read signs, make choices, possibly return. The waka can go forward, around, or back. Second, the framework is recognised rather than taught. For Māori and Pacific peoples, wayfinding is already familiar; for others, journeying is universal enough to carry meaning without requiring methodology training. Third, the unit is the collective — those who can fit in a boat. Rather than entire organisations, we're thinking here of teams working on a shared challenge. You have to be <em>in</em> the waka to participate in its direction and trajectory.</p>
+                <p>This artefact is for those crews.</p>
             </div>
         </div>
     </div>
