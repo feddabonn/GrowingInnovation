@@ -77,6 +77,10 @@
             transition: opacity 0.3s;
         }
 
+        .node-label.always-visible {
+            opacity: 1;
+        }
+
         .node.highlighted .node-label,
         .node:hover .node-label {
             opacity: 1;
@@ -328,7 +332,7 @@
             
             // Fermentation / decay as generative
             { source: 'katz', target: 'tsing', concept: 'Transformation through decay' },
-            { source: 'katz', target: 'kimmerer', concept: 'Cycles of decay and renewal' },
+
             
             // Post-literate / secondary orality (within How I See)
             { source: 'pettitt', target: 'ong', concept: 'Secondary orality, post-literate' },
@@ -339,7 +343,7 @@
             
             // Spirit worlds / animist ontology
             { source: 'miyazaki', target: 'birddavid', concept: 'Spirits as persons, animist ontology' },
-            { source: 'miyazaki', target: 'kimmerer', concept: 'Reciprocity with more-than-human world' },
+
             
             // Pacific / living tradition
             { source: 'tanna', target: 'tamasese', concept: 'Pacific living traditions under pressure' },
@@ -350,7 +354,7 @@
             { source: 'pirsig', target: 'fukuoka', concept: 'Quality as attending to what is already there' },
             
             // Stewardship / inheritance
-            { source: 'kerr', target: 'kimmerer', concept: 'Stewardship, leaving things better' },
+
             { source: 'kerr', target: 'tamasese', concept: 'Pacific inheritance' },
             
             // Collaborative survival in precarious conditions
@@ -365,7 +369,75 @@
             { source: 'asterix', target: 'scott', concept: 'Small communities against empire' },
             
             // Pattern / relational structure
-            { source: 'yunkaporta', target: 'giuffre', concept: 'Structural position shapes what emerges' }
+            { source: 'yunkaporta', target: 'giuffre', concept: 'Structural position shapes what emerges' },
+            
+            // Within-theme: Growing
+            { source: 'fukuoka', target: 'katz', concept: 'Working with natural processes, not against' },
+            { source: 'fukuoka', target: 'baker', concept: 'Subtraction, using what\'s already there' },
+            { source: 'katz', target: 'baker', concept: 'Craft knowledge transmitted through practice' },
+            { source: 'miyazaki', target: 'fukuoka', concept: 'Spiritual dimension of nature, transformation through tending' },
+            { source: 'asterix', target: 'baker', concept: 'Small-scale sufficiency against expansion logic' },
+            
+            // Within-theme: Innovation
+            { source: 'mao', target: 'satrapi', concept: 'Revolution lived from inside' },
+            { source: 'escobar', target: 'tanna', concept: 'Local worlds under pressure from universalising systems' },
+            { source: 'escobar', target: 'yunus', concept: 'Alternative development, design from margins' },
+            { source: 'satrapi', target: 'tanna', concept: 'Personal narrative holding cultural collision' },
+            { source: 'yunus', target: 'mao', concept: 'Mobilising the overlooked' },
+            
+            // Within-theme: Capability
+            { source: 'spiller', target: 'yunkaporta', concept: 'Indigenous navigation, reading pattern' },
+            { source: 'spiller', target: 'kimmerer', concept: 'Indigenous ecological knowledge' },
+            { source: 'yunkaporta', target: 'kimmerer', concept: 'Knowledge as relationship, not extraction' },
+
+            { source: 'yunkaporta', target: 'pirsig', concept: 'Pattern recognition across domains' },
+            { source: 'tamasese', target: 'kimmerer', concept: 'Standing in relation to land and ancestors' },
+            
+            // Within-theme: Teams
+            { source: 'giuffre', target: 'tsing', concept: 'Emergence from assemblage, not design' },
+            { source: 'giuffre', target: 'simard', concept: 'Network position shapes what flows' },
+            { source: 'tsing', target: 'simard', concept: 'Fungal networks, interspecies collaboration' },
+            { source: 'simard', target: 'kerr', concept: 'Legacy, what dying feeds forward' },
+            { source: 'darkhorse', target: 'giuffre', concept: 'Collective emerges from who\'s actually there' },
+            
+            // Within-theme: Relationality
+            { source: 'gaiman', target: 'tan', concept: 'Visual/mythic storytelling, dream logic' },
+            { source: 'gaiman', target: 'birddavid', concept: 'Non-human persons, animist cosmology' },
+            { source: 'mollerup', target: 'tan', concept: 'Spatial reading, orientation without text' },
+            { source: 'fadiman', target: 'birddavid', concept: 'Incommensurable ontologies meeting' },
+            { source: 'tan', target: 'fadiman', concept: 'Navigating worlds that don\'t translate' },
+            
+            // Within-theme: How I See
+            { source: 'jacob', target: 'roy', concept: 'Postcolonial literature, marginal voices' },
+            { source: 'roy', target: 'scott', concept: 'Small against systems, what escapes capture' },
+            { source: 'ong', target: 'scott', concept: 'Oral cultures and state illegibility' },
+            
+            // Additional Tsing connections
+            { source: 'tsing', target: 'escobar', concept: 'Pluriverse, living in ruins of capitalism' },
+            { source: 'tsing', target: 'scott', concept: 'Matsutake pickers as populations evading capture' },
+            { source: 'tsing', target: 'birddavid', concept: 'More-than-human relations, relational ontology' },
+            
+            // Additional Fukuoka connections
+            { source: 'fukuoka', target: 'kimmerer', concept: 'Learning from plants, reciprocity with nature' },
+            { source: 'fukuoka', target: 'simard', concept: 'Farm/forest as interconnected system, not individuals to manage' },
+            { source: 'fukuoka', target: 'tsing', concept: 'What emerges without human control, limits of management' },
+            { source: 'fukuoka', target: 'scott', concept: 'Farming illegible to state, resists scientific agriculture' },
+            { source: 'fukuoka', target: 'escobar', concept: 'Anti-development, critique of modernisation' },
+            
+            // Additional Spiller connections
+            { source: 'spiller', target: 'giuffre', concept: 'Relational leadership, position in network shapes capability' },
+            { source: 'spiller', target: 'simard', concept: 'Reading distributed signals, hub roles in networks' },
+            { source: 'spiller', target: 'darkhorse', concept: 'Māori leadership in uncertain conditions' },
+            { source: 'spiller', target: 'escobar', concept: 'Pluriversal navigation, non-Western knowledge systems' },
+            { source: 'spiller', target: 'gaiman', concept: 'Narrative as navigation, myth holding direction' },
+            { source: 'spiller', target: 'scott', concept: 'Navigation as illegibility, reading what states cannot see' },
+            
+            // Additional Gaiman connections
+            { source: 'gaiman', target: 'jacob', concept: 'Narrative holding trauma, stories that reconstitute community' },
+            { source: 'gaiman', target: 'roy', concept: 'Literary voice carrying what academic prose cannot' },
+            { source: 'gaiman', target: 'miyazaki', concept: 'Dream worlds, spirits, transformation through story' },
+            { source: 'gaiman', target: 'kerr', concept: 'Myth and legacy, stories that bind across time' },
+            { source: 'gaiman', target: 'yunkaporta', concept: 'Dreaming, story as knowledge system' }
         ];
 
         // Count connections for node sizing
@@ -492,10 +564,10 @@
             .style('fill-opacity', 0.85);
 
         nodeElements.append('text')
-            .attr('class', 'node-label')
+            .attr('class', d => connectionCount[d.id] >= 8 ? 'node-label always-visible' : 'node-label')
             .attr('dy', d => getNodeRadius(d) + 14)
             .attr('text-anchor', 'middle')
-            .text(d => d.author.split(',')[0].split(' ').pop());
+            .text(d => connectionCount[d.id] >= 8 ? d.label : d.author.split(',')[0].split(' ').pop());
 
         function getNodeRadius(node) {
             const count = connectionCount[node.id];
