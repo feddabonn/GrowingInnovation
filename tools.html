@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools — Hautū Waka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #FAFAFA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --teal: #1a7a8c;
+            --teal-light: rgba(26, 122, 140, 0.1);
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Group level accordion */
+        .group-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .group-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .group-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 0;
+            font-family: 'Raleway', sans-serif;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: color 0.2s ease;
+        }
+
+        .group-header:hover .group-title {
+            color: var(--teal);
+        }
+
+        .group-title-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .group-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+        }
+
+        .group-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .group-icon {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+            margin-top: 2px;
+        }
+
+        .group-item.active > .group-header .group-icon {
+            transform: rotate(45deg);
+        }
+
+        .group-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .group-item.active > .group-content {
+            max-height: 3000px;
+        }
+
+        /* Tool level accordion */
+        .tool-item {
+            border-top: 1px solid var(--border);
+            margin-left: 16px;
+        }
+
+        .tool-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 12px 0;
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--teal);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        .tool-header:hover {
+            color: var(--teal-dark);
+        }
+
+        .tool-icon {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-item.active > .tool-header .tool-icon {
+            transform: rotate(45deg);
+        }
+
+        .tool-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .tool-item.active > .tool-content {
+            max-height: 1500px;
+            padding-bottom: 16px;
+        }
+
+        .tool-description {
+            font-size: 15px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .stage-applications {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .stage-application {
+            margin-bottom: 10px;
+            padding-left: 12px;
+            border-left: 2px solid var(--teal-light);
+        }
+
+        .stage-application:last-child {
+            margin-bottom: 0;
+        }
+
+        .stage-application em {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .group-title {
+                font-size: 16px;
+            }
+
+            .group-subtitle {
+                font-size: 13px;
+            }
+
+            .tool-header {
+                font-size: 15px;
+            }
+
+            .tool-description,
+            .stage-applications {
+                font-size: 14px;
+            }
+
+            .tool-item {
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- The Inner Landscape -->
+    <div class="group-item">
+        <button class="group-header" onclick="toggleGroup(this)">
+            <div class="group-title-wrapper">
+                <span class="group-title">The Inner Landscape</span>
+                <span class="group-subtitle">Surfacing what's hard to name</span>
+            </div>
+            <span class="group-icon">+</span>
+        </button>
+        <div class="group-content">
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Emotional Culture Deck</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Teams use emotion cards to surface how they want to feel at work, how they don't want to feel, and what behaviours create those feelings. Makes emotional culture visible and discussable.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to set emotional intentions for the journey. Try asking: <em>What emotions do we want to cultivate? What do we want to leave behind?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to name what's present as you enter uncertainty. Try asking: <em>What fears are here? What excitement?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to surface emotional responses to signs. Try asking: <em>What are we feeling about what we're seeing? What emotional data are we ignoring?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to check how options land. Try asking: <em>How do we feel about each direction? What does that tell us?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to track what's emerging in the work. Try asking: <em>What emotions are present now? What needs attention?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on emotional shift. Try asking: <em>How do we feel now compared to when we started?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>More Than Words</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Visual prompts help people access thoughts, feelings, memories they struggle to articulate verbally. Works through metaphor rather than direct expression.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to locate the team. Try asking: <em>Choose an image for where we are now. Choose one for where we want to be.</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to give shape to the unknown. Try asking: <em>What image captures what we're entering?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to surface intuitive responses to signs. Try asking: <em>Which images resonate with what we're noticing?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to test direction. Try asking: <em>What image represents the path we're choosing?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to check in during action. Try asking: <em>What image captures what this work feels like right now?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to hold the journey. Try asking: <em>What image represents where we've been?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Deeper Questions</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        45 question cards designed to move conversations past surface level. Prompts storytelling and personal disclosure.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to surface what people bring. Try asking: <em>What's at stake for you personally in this journey?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to voice what's unspoken. Try asking: <em>What have we been afraid to say?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to name emerging patterns. Try asking: <em>What are we noticing that we haven't named yet?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to surface assumptions. Try asking: <em>What's really driving this decision?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to address difficulty. Try asking: <em>What's hard about this work that we're not talking about?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on meaning. Try asking: <em>What did this journey mean to you?</em></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Reading the System -->
+    <div class="group-item">
+        <button class="group-header" onclick="toggleGroup(this)">
+            <div class="group-title-wrapper">
+                <span class="group-title">Reading the System</span>
+                <span class="group-subtitle">Understanding context and conditions</span>
+            </div>
+            <span class="group-icon">+</span>
+        </button>
+        <div class="group-content">
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>6 Conditions of Systems Change</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        FSG framework for analysing systems across six conditions — three explicit (policies, practices, resource flows) and three implicit (relationships, power dynamics, mental models). Used to surface where change efforts should focus.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to understand context. Try asking: <em>What conditions shape the system we're working in? Where might leverage be?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to name systemic fears. Try asking: <em>Which conditions feel immovable? Which feel possible to shift?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to read signs at multiple levels. Try asking: <em>What's happening in relationships and power, not just policies and practices?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to choose where to focus. Try asking: <em>Which conditions are we trying to shift? Are we aiming at the right level?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to notice resistance. Try asking: <em>What's pushing back? Is the resistance structural, relational, or in mental models?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to assess systemic shift. Try asking: <em>What changed at each level? What held firm?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>PESTLE</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Environmental scanning framework — Political, Economic, Social, Technological, Legal, Environmental factors. Used to read the broader context you're operating in.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to scan the horizon before setting off. Try asking: <em>What external forces are shaping our environment? What might shift?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to name external uncertainties. Try asking: <em>Which factors feel most unpredictable right now?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to triangulate signs. Try asking: <em>What's happening across these dimensions? Where do patterns converge?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to stress-test decisions. Try asking: <em>How robust is this direction if political/economic/social conditions change?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to stay alert to shifts. Try asking: <em>What's changing in our external environment as we work?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on what changed around you. Try asking: <em>How did the external landscape shift during our journey?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Two Loops Model</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Visual framework showing two curves — one system in decline, another emerging. Identifies roles: pioneers of the new, hospice workers for the old, connectors between them.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to locate the team in larger transitions. Try asking: <em>What's dying that we're part of? What's emerging? Where do we stand?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to name what's being left behind. Try asking: <em>What old system are we departing from? What grief comes with that?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to read which loop signs belong to. Try asking: <em>Are these signs of the old system or the new? Are we reading both?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to clarify role. Try asking: <em>Are we pioneering, hospicing, or connecting? Does our direction match?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to understand resistance. Try asking: <em>Is friction coming from the dying system or the emerging one?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on transition. Try asking: <em>What ended? What began? What did we help to bridge?</em></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Holding Direction -->
+    <div class="group-item">
+        <button class="group-header" onclick="toggleGroup(this)">
+            <div class="group-title-wrapper">
+                <span class="group-title">Holding Direction</span>
+                <span class="group-subtitle">Narrative and decision</span>
+            </div>
+            <span class="group-icon">+</span>
+        </button>
+        <div class="group-content">
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Theory of Change</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Maps causal pathways from activities to outcomes (If, By, Then, & Then, & Eventually). Forces articulation of assumptions about how change happens.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to clarify purpose. Try asking: <em>What change are we ultimately trying to create? What's our best guess about how to get there?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to hold direction lightly. Try asking: <em>What assumptions are we making about how change works here?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to test the pathway. Try asking: <em>Do the signs we're seeing support or challenge our theory?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to evaluate decisions against purpose. Try asking: <em>Does this direction still serve the change we're trying to create?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to track progress. Try asking: <em>Are the early outcomes we expected actually happening?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on what held. Try asking: <em>What did we get right about how change works? What surprised us?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>DVFE</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Decision evaluation lens assessing options against four criteria — Desirability (Do people want it?), Viability (Can it sustain itself?), Feasibility (Can we actually do it?), Ethicality (Should we do it?).
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to test readiness. Try asking: <em>Is this journey desirable, viable, feasible, ethical? Where are the gaps?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to name doubts. Try asking: <em>Which of these four feels weakest right now?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to evaluate signs. Try asking: <em>What are the signs telling us about desirability, viability, feasibility, ethicality?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to evaluate options. Try asking: <em>How does each direction score across all four? Where are the trade-offs?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to check alignment. Try asking: <em>Is the work still desirable, viable, feasible, ethical? What's shifted?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to assess the outcome. Try asking: <em>Did we arrive somewhere desirable, viable, feasible, ethical?</em></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Learning -->
+    <div class="group-item">
+        <button class="group-header" onclick="toggleGroup(this)">
+            <div class="group-title-wrapper">
+                <span class="group-title">Learning</span>
+                <span class="group-subtitle">Capturing and processing</span>
+            </div>
+            <span class="group-icon">+</span>
+        </button>
+        <div class="group-content">
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Reflexiv</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Reflective cycle — Experience → What (stood out) → So What (patterns, implications) → Now What (actions) → Experiment → new Experience. Derived from Kolb and Driscoll.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to learn from past journeys. Try asking: <em>What stood out from previous attempts? What will we do differently?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to process early experiences. Try asking: <em>What's standing out as we enter this? So what might that mean?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to make sense of signs. Try asking: <em>What patterns are we noticing? What do they imply?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to connect decision to learning. Try asking: <em>What have we learned that informs this choice?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to learn while doing. Try asking: <em>What's working? What needs adjusting? What will we try next?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to consolidate learning. Try asking: <em>What do we know now that we didn't before? What will we carry forward?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Pixar Story Spine</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Narrative structure template — "Once upon a time... Every day... One day... Because of that... Until finally... And ever since then..." Used to construct coherent narratives from messy experience.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to tell the story so far. Try asking: <em>What's the narrative that brought us to this journey?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to voice the hoped-for story. Try asking: <em>What story do we want to be able to tell when this is done?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to notice emerging narrative. Try asking: <em>What story is forming from the signs we're seeing?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to test direction against story. Try asking: <em>If we choose this path, what story does it commit us to?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to check narrative coherence. Try asking: <em>Is what we're doing consistent with the story we want to tell?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to construct the journey narrative. Try asking: <em>Once upon a time... what happened to us?</em></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Tending the Whole -->
+    <div class="group-item">
+        <button class="group-header" onclick="toggleGroup(this)">
+            <div class="group-title-wrapper">
+                <span class="group-title">Tending the Whole</span>
+                <span class="group-subtitle">Holistic check-in and closure</span>
+            </div>
+            <span class="group-icon">+</span>
+        </button>
+        <div class="group-content">
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Te Whare Tapa Whā</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Framework for holistic wellbeing — checking in across Tinana (body), Hinengaro (mind/heart), Whānau (relationships), Wairua (spirit), grounded in Whenua (place). Applied here at team level.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to assess readiness. Try asking: <em>How is the team across all dimensions? What needs tending before we set off?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to check in during uncertainty. Try asking: <em>Which walls of the whare are under strain right now?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to notice what dimensions are speaking. Try asking: <em>Are we reading signs with our whole selves, or just our minds?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to evaluate decisions holistically. Try asking: <em>How does this direction affect each dimension of our wellbeing?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to sustain the team. Try asking: <em>What's getting neglected as we do the work? What needs attention?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to reflect on the whole experience. Try asking: <em>How did this journey affect us — body, mind, relationships, spirit?</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <button class="tool-header" onclick="toggleTool(this)">
+                    <span>Project Funeral</span>
+                    <span class="tool-icon">+</span>
+                </button>
+                <div class="tool-content">
+                    <div class="tool-description">
+                        Structured practice for marking endings — acknowledging what's complete, what's being left behind, what was learned.
+                    </div>
+                    <div class="stage-applications">
+                        <div class="stage-application">In Whakariterite, this can be used to close previous journeys. Try asking: <em>What needs to be properly ended before we begin something new?</em></div>
+                        <div class="stage-application">In Te Rāpunga, this can be used to acknowledge what's dying. Try asking: <em>What are we leaving behind? Have we said goodbye?</em></div>
+                        <div class="stage-application">In Te Kitenga, this can be used to recognise endings in signs. Try asking: <em>What signs point to things that need to be released?</em></div>
+                        <div class="stage-application">In Te Whāinga, this can be used to name what a decision closes off. Try asking: <em>If we choose this, what are we saying no to? Can we mark that?</em></div>
+                        <div class="stage-application">In Te Whiwhinga, this can be used to release what's not working. Try asking: <em>What do we need to stop doing? How do we let it go properly?</em></div>
+                        <div class="stage-application">In Te Rāwenga, this can be used to mark the journey's end. Try asking: <em>What's complete? Who and what do we need to acknowledge? What do we bury, and what do we carry?</em></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleGroup(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close all groups
+    document.querySelectorAll('.group-item').forEach(el => {
+        el.classList.remove('active');
+        // Also close all tools within
+        el.querySelectorAll('.tool-item').forEach(tool => {
+            tool.classList.remove('active');
+        });
+    });
+    
+    // Open clicked group if it wasn't already open
+    if (!isActive) {
+        item.classList.add('active');
+    }
+}
+
+function toggleTool(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close all tools in the same group
+    const group = item.closest('.group-content');
+    group.querySelectorAll('.tool-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Open clicked tool if it wasn't already open
+    if (!isActive) {
+        item.classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>
