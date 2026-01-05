@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscles — Hautū Waka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #FAFAFA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --teal: #1a7a8c;
+            --teal-light: rgba(26, 122, 140, 0.1);
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .accordion-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 0;
+            font-family: 'Raleway', sans-serif;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: color 0.2s ease;
+        }
+
+        .accordion-header:hover .accordion-title {
+            color: var(--teal);
+        }
+
+        .accordion-title-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .accordion-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+        }
+
+        .accordion-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+            margin-top: 2px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1500px;
+            padding-bottom: 20px;
+        }
+
+        .muscle {
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 2px solid var(--teal-light);
+        }
+
+        .muscle:last-child {
+            margin-bottom: 0;
+        }
+
+        .muscle-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 4px;
+        }
+
+        .muscle-description {
+            font-size: 15px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .accordion-title {
+                font-size: 16px;
+            }
+
+            .accordion-subtitle {
+                font-size: 13px;
+            }
+
+            .muscle-name {
+                font-size: 14px;
+            }
+
+            .muscle-description {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Whenua -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-wrapper">
+                <span class="accordion-title">Whenua</span>
+                <span class="accordion-subtitle">Foundation</span>
+            </div>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="muscle">
+                <div class="muscle-name">Rootedness and Belonging</div>
+                <div class="muscle-description">Connection to place shapes identity. Knowing where you come from — your grounding — helps you navigate where you're going. Belonging isn't just sentiment; it's foundational to knowing.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Continuous Attentiveness</div>
+                <div class="muscle-description">Environment communicates constantly. Staying connected means refreshing understanding as conditions shift — not making one assessment and holding to it.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Temporal Submission</div>
+                <div class="muscle-description">Place has its own rhythms. Growing happens according to the logic of context, not the urgency of the grower. Patience isn't passive waiting — it's active attunement to timing that isn't yours to determine.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Compost and Return</div>
+                <div class="muscle-description">What dies enables growth to continue. Old patterns, identities, certainties — their dissolution creates conditions for what comes next. Endings aren't failures; they're how growing continues.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taha Tinana -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-wrapper">
+                <span class="accordion-title">Taha Tinana</span>
+                <span class="accordion-subtitle">Physical</span>
+            </div>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="muscle">
+                <div class="muscle-name">Body as Intelligence</div>
+                <div class="muscle-description">Your body registers information before your conscious mind does. Tension, ease, gut responses, energy shifts — these are data. Intelligence comes through all senses, not just sight.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Embodied Restraint</div>
+                <div class="muscle-description">Not-doing takes practice. The body learns to hold back, pause before acting, resist the impulse to intervene. Expertise often expresses itself through restraint — the experienced practitioner knows what not to do.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taha Wairua -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-wrapper">
+                <span class="accordion-title">Taha Wairua</span>
+                <span class="accordion-subtitle">Spiritual</span>
+            </div>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="muscle">
+                <div class="muscle-name">Purpose and Lineage</div>
+                <div class="muscle-description">Work connects to something larger than immediate tasks. Purpose provides orientation when conditions shift. Traditional practices contain wisdom tested over generations — contemporary practitioners can draw on these without claiming deep cultural authority.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Working with Endings and Uncertainty</div>
+                <div class="muscle-description">Everything ends. Not everything can be known in advance. Spiritual maturity includes orienting toward both — accepting impermanence without rancour, working with uncertainty as material rather than obstacle.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taha Whānau -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-wrapper">
+                <span class="accordion-title">Taha Whānau</span>
+                <span class="accordion-subtitle">Social</span>
+            </div>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="muscle">
+                <div class="muscle-name">Relational Intelligence</div>
+                <div class="muscle-description">Relationships aren't just context for work — they are the work. The quality of relationships determines what becomes possible. Understanding emerges through collective process, not individual genius.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Working Difficulty Together</div>
+                <div class="muscle-description">Honest collective work involves disagreement, tension, and struggle. Conflict isn't failure of relationship — it can be the relationship working. Collectives also lose members; collective grief is part of how groups remain capable of forming new attachments.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taha Hinengaro -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-wrapper">
+                <span class="accordion-title">Taha Hinengaro</span>
+                <span class="accordion-subtitle">Mental / Emotional</span>
+            </div>
+            <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+            <div class="muscle">
+                <div class="muscle-name">Multiple Ways of Knowing</div>
+                <div class="muscle-description">Rational analysis is one tool among many. Intuition, embodied knowing, emotional intelligence, ancestral wisdom — all valid. Pattern recognition works across domains; triangulation requires diverse inputs.</div>
+            </div>
+            <div class="muscle">
+                <div class="muscle-name">Staying with Difficulty</div>
+                <div class="muscle-description">Innovation is struggle. Frustration isn't sign of failure — it's the texture of the work. Sitting with incompletion takes discipline; the urge to resolve, complete, fix is powerful. The disposition is to stay in difficulty rather than escape it.</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleAccordion(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close all items
+    document.querySelectorAll('.accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't already open
+    if (!isActive) {
+        item.classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>
