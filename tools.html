@@ -201,19 +201,20 @@
 
         /* Photos sit directly on the page */
         .tool-figure.photo img {
+            width: auto;
+            max-width: 100%;
             max-height: 320px;
         }
 
-        /* Line drawings sit on a paper-coloured panel so dark strokes stay legible */
+        /* Line drawings sit on a white panel, like the printed sheet */
         .tool-figure.diagram {
-            background: #e4d9b8;
+            background: #ffffff;
             padding: 16px 20px;
             max-width: 720px;
         }
 
         .tool-figure.diagram img {
             width: 100%;
-            mix-blend-mode: multiply;
         }
 
 
@@ -649,7 +650,9 @@ function toggleTool(button) {
     var box = document.querySelector('.container');
     var last = 0;
     function report() {
-        var h = Math.ceil(box.getBoundingClientRect().height) + 8;
+        var r = box.getBoundingClientRect();
+        if (r.width === 0) return;
+        var h = Math.ceil(r.height) + 8;
         if (h !== last) {
             last = h;
             window.parent.postMessage({ type: 'hw-embed-height', page: 'tools', height: h }, '*');

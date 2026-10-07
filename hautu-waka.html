@@ -523,6 +523,26 @@ function handleKeydown(event, stageId) {
     }
 }
 
+// Report content height to the host page so the iframe fits the diagram.
+(function () {
+    if (window.parent === window) return;
+    var box = document.querySelector('.container');
+    var last = 0;
+    function report() {
+        var r = box.getBoundingClientRect();
+        if (r.width === 0) return;
+        var hgt = Math.ceil(r.height) + 8;
+        if (hgt !== last) {
+            last = hgt;
+            window.parent.postMessage({ type: 'hw-embed-height', page: 'hautu-waka', height: hgt }, '*');
+        }
+    }
+    if ('ResizeObserver' in window) { new ResizeObserver(report).observe(box); }
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    report();
+})();
+
 // Close on escape
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
