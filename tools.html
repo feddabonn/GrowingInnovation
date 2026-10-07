@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tools — Hautū Waka</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #FAFAFA;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --teal: #1a7a8c;
-            --teal-dark: #145f6d;
-            --teal-light: rgba(26, 122, 140, 0.1);
-            --border: #e0e0e0;
+            --bg-main: #1A1A18;
+            --text-primary: #e4d9b8;
+            --text-secondary: rgba(228, 217, 184, 0.7);
+            --teal: #6fc0cf;
+            --teal-dark: #a3dbe5;
+            --teal-light: rgba(111, 192, 207, 0.35);
+            --border: rgba(228, 217, 184, 0.22);
         }
 
         * {
@@ -25,16 +22,31 @@
         }
 
         body {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'p22-mackinac-pro', 'P22 Mackinac Pro', 'Mackinac Pro', Georgia, 'Times New Roman', serif;
             background: var(--bg-main);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 24px;
+            padding: 0 0 8px;
+            color-scheme: dark;
+        }
+
+        html {
+            background: var(--bg-main);
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--text-primary);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
         }
 
         .container {
-            max-width: 720px;
-            margin: 0 auto;
+            max-width: none;
+            margin: 0;
         }
 
         /* Group level accordion */
@@ -51,7 +63,7 @@
             background: none;
             border: none;
             padding: 16px 0;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'p22-mackinac-pro', 'P22 Mackinac Pro', 'Mackinac Pro', Georgia, 'Times New Roman', serif;
             text-align: left;
             cursor: pointer;
             display: flex;
@@ -102,7 +114,7 @@
         }
 
         .group-item.active > .group-content {
-            max-height: 3000px;
+            max-height: 8000px;
         }
 
         /* Tool level accordion */
@@ -116,7 +128,7 @@
             background: none;
             border: none;
             padding: 12px 0;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'p22-mackinac-pro', 'P22 Mackinac Pro', 'Mackinac Pro', Georgia, 'Times New Roman', serif;
             font-size: 16px;
             font-weight: 500;
             color: var(--teal);
@@ -150,18 +162,63 @@
         }
 
         .tool-item.active > .tool-content {
-            max-height: 1500px;
+            max-height: 2500px;
             padding-bottom: 16px;
         }
 
+        .tool-question {
+            max-width: 720px;
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin: 4px 0 2px;
+        }
+
+        .tool-credit {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0 0 14px;
+        }
+
         .tool-description {
+            max-width: 720px;
             font-size: 15px;
             color: var(--text-primary);
             line-height: 1.7;
             margin-bottom: 16px;
         }
 
+        .tool-figure {
+            margin: 4px 0 20px;
+            max-width: 720px;
+        }
+
+        .tool-figure img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Photos sit directly on the page */
+        .tool-figure.photo img {
+            max-height: 320px;
+        }
+
+        /* Line drawings sit on a paper-coloured panel so dark strokes stay legible */
+        .tool-figure.diagram {
+            background: #e4d9b8;
+            padding: 16px 20px;
+            max-width: 720px;
+        }
+
+        .tool-figure.diagram img {
+            width: 100%;
+            mix-blend-mode: multiply;
+        }
+
+
         .stage-applications {
+            max-width: 720px;
             font-size: 14px;
             color: var(--text-primary);
             line-height: 1.7;
@@ -233,7 +290,7 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 16px;
+                padding: 0 0 8px;
             }
 
             .group-title {
@@ -268,7 +325,7 @@
         <h2 class="acc-heading"><button class="group-header" aria-expanded="false" onclick="toggleGroup(this)">
             <div class="group-title-wrapper">
                 <span class="group-title">The Inner Landscape</span>
-                <span class="group-subtitle">Surfacing what's hard to name</span>
+                <span class="group-subtitle">Tools for better conversations</span>
             </div>
             <span class="group-icon" aria-hidden="true">+</span>
         </button></h2>
@@ -280,10 +337,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">How are we feeling as a team, and how do we want to feel?</p>
+                    <p class="tool-credit">By riders&amp;elephants</p>
                     <div class="tool-description">
                         Teams use emotion cards to surface how they want to feel at work, how they don't want to feel, and what behaviours create those feelings. Makes emotional culture visible and discussable.
                         <a href="https://www.ridersandelephants.com/the-emotional-culture-deck" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure photo">
+                        <img src="images/emotional-culture-deck.jpg" width="1440" height="1080" alt="The Emotional Culture Deck box beside spread cards, white and black, each printed with one emotion word such as curious, impatient, encouraged and hesitant." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to set emotional intentions for the journey. Try asking: <em>What emotions do we want to cultivate? What do we want to leave behind?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to name what's present as you enter uncertainty. Try asking: <em>What fears are here? What excitement?</em></div>
@@ -297,14 +359,19 @@
 
             <div class="tool-item">
                 <h3 class="acc-heading"><button class="tool-header" aria-expanded="false" onclick="toggleTool(this)">
-                    <span>More Than Words</span>
+                    <span>More than Words</span>
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">What does this picture say that we don't have words for, yet?</p>
+                    <p class="tool-credit">By Sabrina David</p>
                     <div class="tool-description">
                         Visual prompts help people access thoughts, feelings, memories they struggle to articulate verbally. Works through metaphor rather than direct expression.
                         <a href="https://www.morethanwords.nz" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure photo">
+                        <img src="images/more-than-words.jpg" width="1440" height="1080" alt="The More than Words box and title card with a spread of illustrated image cards, among them a hammer and a sun behind clouds." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to locate the team. Try asking: <em>Choose an image for where we are now. Choose one for where we want to be.</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to give shape to the unknown. Try asking: <em>What image captures what we're entering?</em></div>
@@ -322,10 +389,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">What haven't we asked each other yet?</p>
+                    <p class="tool-credit">By Kiran Patel</p>
                     <div class="tool-description">
                         45 question cards designed to move conversations past surface level. Prompts storytelling and personal disclosure.
                         <a href="https://www.askdeeperquestions.com" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure photo">
+                        <img src="images/deeper-questions.jpg" width="1440" height="1080" alt="The green Deeper Questions box with question cards spread in front of it." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to surface what people bring. Try asking: <em>What's at stake for you personally in this journey?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to voice what's unspoken. Try asking: <em>What have we been afraid to say?</em></div>
@@ -345,7 +417,7 @@
         <h2 class="acc-heading"><button class="group-header" aria-expanded="false" onclick="toggleGroup(this)">
             <div class="group-title-wrapper">
                 <span class="group-title">Reading the System</span>
-                <span class="group-subtitle">Understanding context and conditions</span>
+                <span class="group-subtitle">Making sense of complex contexts</span>
             </div>
             <span class="group-icon" aria-hidden="true">+</span>
         </button></h2>
@@ -353,14 +425,19 @@
 
             <div class="tool-item">
                 <h3 class="acc-heading"><button class="tool-header" aria-expanded="false" onclick="toggleTool(this)">
-                    <span>6 Conditions of Systems Change</span>
+                    <span>Six Conditions of Systems Change</span>
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">What's really holding this situation in place?</p>
+                    <p class="tool-credit">After Kania, Kramer &amp; Senge, FSG · <a href="downloads/six-conditions-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
-                        FSG framework for analysing systems across six conditions — three explicit (policies, practices, resource flows) and three implicit (relationships, power dynamics, mental models). Used to surface where change efforts should focus.
+                        FSG framework for analysing systems across six conditions at three levels: structural (policies, practices, resource flows), relational (relationships and connections, power dynamics) and transformative (mental models). Used to surface where change efforts should focus.
                         <a href="https://www.fsg.org/resource/water_of_systems_change/" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/six-conditions.png" width="1400" height="1159" alt="The Six Conditions worksheet: six circles joined like balloons on elastic. Top row: what are the rules (policies), what do people actually do (practices), where do time and money go (resource flows). Middle row: who talks to whom (relationships and connections), who decides and who gets heard (power dynamics). Bottom: what do we assume is true but could be wrong (mental models)." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to understand context. Try asking: <em>What conditions shape the system we're working in? Where might leverage be?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to name systemic fears. Try asking: <em>Which conditions feel immovable? Which feel possible to shift?</em></div>
@@ -378,10 +455,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">What's changing around us?</p>
+                    <p class="tool-credit">After Francis Aguilar · <a href="downloads/pestle-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
                         Environmental scanning framework — Political, Economic, Social, Technological, Legal, Environmental factors. Used to read the broader context you're operating in.
                         <a href="https://www.cipd.org/en/knowledge/factsheets/pestle-analysis-factsheet/" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/pestle.png" width="1400" height="1286" alt="The PESTLE worksheet: a ring around a centre marked us, cut into six slices for political, economic, social, technological, legal and environmental change. Inside the ring is affecting us now; outside it is on the horizon." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to scan the horizon before setting off. Try asking: <em>What external forces are shaping our environment? What might shift?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to name external uncertainties. Try asking: <em>Which factors feel most unpredictable right now?</em></div>
@@ -395,14 +477,19 @@
 
             <div class="tool-item">
                 <h3 class="acc-heading"><button class="tool-header" aria-expanded="false" onclick="toggleTool(this)">
-                    <span>Two Loops Model</span>
+                    <span>Two Loops</span>
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">What's ending, and what's beginning?</p>
+                    <p class="tool-credit">After Wheatley &amp; Frieze, Berkana Institute · <a href="downloads/two-loops-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
                         Visual framework showing two curves — one system in decline, another emerging. Identifies roles: pioneers of the new, hospice workers for the old, connectors between them.
                         <a href="https://commonland.com/how-the-berkana-two-loops-model-guides-us-through-system-change/" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/two-loops.png" width="1400" height="1178" alt="The Two Loops worksheet: an old loop fading and a new loop growing, crossing in the middle. Marked on them: starting the new (pioneers), connecting the two (connectors), caring for what's ending (hospice workers), and stepping across." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to locate the team in larger transitions. Try asking: <em>What's dying that we're part of? What's emerging? Where do we stand?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to name what's being left behind. Try asking: <em>What old system are we departing from? What grief comes with that?</em></div>
@@ -420,9 +507,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">Why do people do what they do?</p>
+                    <p class="tool-credit">After Michie, van Stralen &amp; West · <a href="downloads/com-b-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
                         Behaviour change model — behaviour (B) results from Capability (physical and psychological), Opportunity (physical and social), and Motivation (reflective and automatic). Used to diagnose why a behaviour is or isn't happening, and where to focus if you want it to shift. Sits at the centre of the Behaviour Change Wheel (Michie, van Stralen and West, 2011).
+                        <a href="https://doi.org/10.1186/1748-5908-6-42" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/com-b.png" width="1400" height="1085" alt="The COM-B worksheet: three boxes for can they (capability), do they want to (motivation) and is it possible (opportunity), each split in two, all linked to a box for the behaviour." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to check what the journey will ask of the team. Try asking: <em>Do we have the capability, opportunity and motivation this will require? Where are the gaps?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to locate what's holding us back. Try asking: <em>Is the hesitation about capability, opportunity, or motivation?</em></div>
@@ -442,7 +535,7 @@
         <h2 class="acc-heading"><button class="group-header" aria-expanded="false" onclick="toggleGroup(this)">
             <div class="group-title-wrapper">
                 <span class="group-title">Holding Direction</span>
-                <span class="group-subtitle">Narrative and decision</span>
+                <span class="group-subtitle">Drawing action-oriented maps</span>
             </div>
             <span class="group-icon" aria-hidden="true">+</span>
         </button></h2>
@@ -454,10 +547,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">How will we get from here to there?</p>
+                    <p class="tool-credit">After Ingrid Burkett · <a href="downloads/theory-of-change-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
                         Maps causal pathways from activities to outcomes (If, By, Then, & Then, & Eventually). Forces articulation of assumptions about how change happens.
                         <a href="http://ingridburkett.com/wp-content/uploads/2017/09/Introduction-to-Codesign-2.pdf" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/theory-of-change.png" width="1400" height="1124" alt="The Theory of Change worksheet: five columns, If (what are we trying to understand), By (what will we try), Then (what will we have made or done), And then (what will be different for people) and And eventually (what it's like when we get there), with start here marked on the first and last." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to clarify purpose. Try asking: <em>What change are we ultimately trying to create? What's our best guess about how to get there?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to hold direction lightly. Try asking: <em>What assumptions are we making about how change works here?</em></div>
@@ -475,10 +573,15 @@
                     <span class="tool-icon" aria-hidden="true">+</span>
                 </button></h3>
                 <div class="tool-content">
+                    <p class="tool-question">Is this idea worth doing?</p>
+                    <p class="tool-credit">After Alexandra Almond · <a href="downloads/dvfe-simple-A3.pdf" target="_blank" rel="noopener" class="tool-link">A3 worksheet (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
                     <div class="tool-description">
-                        Decision evaluation lens assessing options against four criteria — Desirability (Do people want it?), Viability (Can it sustain itself?), Feasibility (Can we actually do it?), Ethicality (Should we do it?).
+                        Decision evaluation lens assessing options against four criteria — Desirability (Do people want it?), Viability (Can we afford it?), Feasibility (Can we actually build it?), Ethicality (Should we do it?).
                         <a href="https://medium.com/@alexandra_89654/designers-we-need-to-talk-about-desirable-viable-feasible-c30209e859b4" target="_blank" rel="noopener noreferrer" class="tool-link">Learn more<span class="sr-only"> (opens in new tab)</span> →</a>
                     </div>
+                    <figure class="tool-figure diagram">
+                        <img src="images/dvfe.png" width="1400" height="1110" alt="The DVFE worksheet: four rows, do people want it, can we afford it, can we actually build it, and should we do it, each scored from 1 (not really) to 5 (yes, clearly), with space for what came up and what would move the score." onerror="this.closest('figure').remove()">
+                    </figure>
                     <div class="stage-applications">
                         <div class="stage-application">In <span lang="mi">Whakariterite</span>, this can be used to test readiness. Try asking: <em>Is this journey desirable, viable, feasible, ethical? Where are the gaps?</em></div>
                         <div class="stage-application">In <span lang="mi">Te Rapunga</span>, this can be used to name doubts. Try asking: <em>Which of these four feels weakest right now?</em></div>
@@ -539,6 +642,26 @@ function toggleTool(button) {
         setExpanded(item, true);
     }
 }
+
+// Report content height to the host page so the iframe can fit its content.
+(function () {
+    if (window.parent === window) return;
+    var box = document.querySelector('.container');
+    var last = 0;
+    function report() {
+        var h = Math.ceil(box.getBoundingClientRect().height) + 8;
+        if (h !== last) {
+            last = h;
+            window.parent.postMessage({ type: 'hw-embed-height', page: 'tools', height: h }, '*');
+        }
+    }
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(report).observe(box);
+    }
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    report();
+})();
 </script>
 
 </body>

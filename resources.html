@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hautū Waka resources</title>
+    <!--
+      Resources for reflexiv.co/resources (October 2026).
+      Embedded in Rocketspark by iframe, like tools.html and muscles.html.
+      Files live in downloads/ next to this page; previews in downloads/thumbs/.
+    -->
+    <style>
+        :root {
+            --bg-main: #1A1A18;
+            --text-primary: #e4d9b8;
+            --text-secondary: rgba(228, 217, 184, 0.7);
+            --teal: #6fc0cf;
+            --teal-dark: #a3dbe5;
+            --border: rgba(228, 217, 184, 0.22);
+            --card: rgba(228, 217, 184, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { background: var(--bg-main); }
+
+        body {
+            font-family: 'p22-mackinac-pro', 'P22 Mackinac Pro', 'Mackinac Pro', Georgia, 'Times New Roman', serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0 0 8px;
+            color-scheme: dark;
+        }
+
+        .container { max-width: none; margin: 0; }
+
+        .intro {
+            max-width: 720px;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .intro p { margin-bottom: 12px; }
+
+        .note {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        section { margin-top: 40px; }
+
+        h2 {
+            font-size: 22px;
+            font-weight: normal;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 6px;
+        }
+
+        .section-sub {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        h3.group {
+            font-size: 15px;
+            font-weight: normal;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 24px 0 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card a.thumb {
+            display: block;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card a.thumb img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .card-title { font-size: 17px; }
+
+        .card-question {
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        .card-credit {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .card-link {
+            margin-top: auto;
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-dark); text-decoration: underline; }
+
+        a:focus-visible {
+            outline: 2px solid var(--text-primary);
+            outline-offset: 2px;
+        }
+
+        .meta { color: var(--text-secondary); }
+
+        .decks {
+            list-style: none;
+            max-width: 720px;
+        }
+
+        .decks li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .decks li:first-child { border-top: 1px solid var(--border); }
+
+        .footnote {
+            max-width: 720px;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .footnote p { margin-bottom: 8px; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="intro">
+        <p>Everything here is free to download, print and use with your crew. These are made to live on walls: print them at A3, at 100%. Black and white is fine.</p>
+        <p>There are three posters (the story, the tools and the muscles) and seven worksheets for working on together. The tools are best used with a few people, so there's some healthy disagreement.</p>
+    </div>
+
+    <!-- POSTERS -->
+    <section id="posters">
+        <h2>Posters</h2>
+        <p class="section-sub">To pin up where the crew works.</p>
+        <div class="grid">
+
+            <div class="card" id="hautu-waka">
+                <a class="thumb" href="downloads/hautu-waka-poster-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/hautu-waka-poster-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the Hautū Waka poster: the six phases of the voyage, with a feeling written beside each.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">Hautū Waka</div>
+                    <div class="card-question">The story to enter, together.</div>
+                    <div class="card-credit">Diagram based on work by Roimata Taniwha-Paoo and Ayla Hoeta, under the guidance of Matua Rereata Makiha. Feelings and questions by Baruk Jacob.</div>
+                    <div class="card-link"><a href="downloads/hautu-waka-poster-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 2 pages, 2.9 MB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="tools-poster">
+                <a class="thumb" href="downloads/tools-poster-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/tools-poster-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the tools poster: nine tools in three groups, each with its question.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">The tools</div>
+                    <div class="card-question">Nine places to start, in three groups.</div>
+                    <div class="card-credit">After the makers named on the poster.</div>
+                    <div class="card-link"><a href="downloads/tools-poster-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 1 page, 148 KB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="muscles-poster">
+                <a class="thumb" href="downloads/muscles-poster-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/muscles-poster-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the muscles poster: a whare with the five muscles on its walls and foundation.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">The muscles</div>
+                    <div class="card-question">What a crew grows together.</div>
+                    <div class="card-credit">Held in Te Whare Tapa Whā, after Mason Durie.</div>
+                    <div class="card-link"><a href="downloads/muscles-poster-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 1 page, 152 KB</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WORKSHEETS -->
+    <section id="worksheets">
+        <h2>Worksheets</h2>
+        <p class="section-sub">To work on together, with sticky notes. Keep a photo, and come back to them.</p>
+
+        <h3 class="group">The story</h3>
+        <div class="grid">
+            <div class="card" id="hautu-waka-questions">
+                <a class="thumb" href="downloads/hautu-waka-poster-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/hautu-waka-questions.jpg" width="827" height="585" loading="lazy" alt="Preview of the Hautū Waka questions: a few questions for each of the six phases.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">Hautū Waka questions</div>
+                    <div class="card-question">What do we ask ourselves in each phase?</div>
+                    <div class="card-credit">Page two of the Hautū Waka file.</div>
+                    <div class="card-link"><a href="downloads/hautu-waka-poster-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 2 pages, 2.9 MB</span></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="group">Reading the system: making sense of complex contexts</h3>
+        <div class="grid">
+            <div class="card" id="six-conditions">
+                <a class="thumb" href="downloads/six-conditions-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/six-conditions-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the Six Conditions worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">Six Conditions of Systems Change</div>
+                    <div class="card-question">What's really holding this situation in place?</div>
+                    <div class="card-credit">After Kania, Kramer &amp; Senge, FSG.</div>
+                    <div class="card-link"><a href="downloads/six-conditions-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 152 KB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="pestle">
+                <a class="thumb" href="downloads/pestle-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/pestle-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the PESTLE worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">PESTLE</div>
+                    <div class="card-question">What's changing around us?</div>
+                    <div class="card-credit">After Francis Aguilar.</div>
+                    <div class="card-link"><a href="downloads/pestle-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 176 KB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="two-loops">
+                <a class="thumb" href="downloads/two-loops-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/two-loops-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the Two Loops worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">Two Loops</div>
+                    <div class="card-question">What's ending, and what's beginning?</div>
+                    <div class="card-credit">After Wheatley &amp; Frieze, Berkana Institute.</div>
+                    <div class="card-link"><a href="downloads/two-loops-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 176 KB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="com-b">
+                <a class="thumb" href="downloads/com-b-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/com-b-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the COM-B worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">COM-B</div>
+                    <div class="card-question">Why do people do what they do?</div>
+                    <div class="card-credit">After Michie, van Stralen &amp; West.</div>
+                    <div class="card-link"><a href="downloads/com-b-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 176 KB</span></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="group">Holding direction: drawing action-oriented maps</h3>
+        <div class="grid">
+            <div class="card" id="theory-of-change">
+                <a class="thumb" href="downloads/theory-of-change-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/theory-of-change-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the Theory of Change worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">Theory of Change</div>
+                    <div class="card-question">How will we get from here to there?</div>
+                    <div class="card-credit">After Ingrid Burkett.</div>
+                    <div class="card-link"><a href="downloads/theory-of-change-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 176 KB</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="dvfe">
+                <a class="thumb" href="downloads/dvfe-simple-A3.pdf" target="_blank" rel="noopener">
+                    <img src="downloads/thumbs/dvfe-simple-A3.jpg" width="827" height="585" loading="lazy" alt="Preview of the DVFE worksheet.">
+                </a>
+                <div class="card-body">
+                    <div class="card-title">DVFE</div>
+                    <div class="card-question">Is this idea worth doing?</div>
+                    <div class="card-credit">After Alexandra Almond.</div>
+                    <div class="card-link"><a href="downloads/dvfe-simple-A3.pdf" target="_blank" rel="noopener">Download PDF<span class="sr-only"> (opens in new tab)</span></a> <span class="meta">· A3, 172 KB</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD DECKS -->
+    <section id="card-decks">
+        <h2>The Inner Landscape: tools for better conversations</h2>
+        <p class="section-sub">These three are card decks, so there's nothing to print. They're available from their makers.</p>
+        <ul class="decks">
+            <li><a href="https://www.ridersandelephants.com/the-emotional-culture-deck" target="_blank" rel="noopener noreferrer">The Emotional Culture Deck<span class="sr-only"> (opens in new tab)</span></a> · <span class="meta">by riders&amp;elephants</span><br><em>How are we feeling as a team, and how do we want to feel?</em></li>
+            <li><a href="https://www.morethanwords.nz" target="_blank" rel="noopener noreferrer">More than Words<span class="sr-only"> (opens in new tab)</span></a> · <span class="meta">by Sabrina David</span><br><em>What does this picture say that we don't have words for, yet?</em></li>
+            <li><a href="https://www.askdeeperquestions.com" target="_blank" rel="noopener noreferrer">Deeper Questions<span class="sr-only"> (opens in new tab)</span></a> · <span class="meta">by Kiran Patel</span><br><em>What haven't we asked each other yet?</em></li>
+        </ul>
+    </section>
+
+    <div class="footnote">
+        <p>The worksheets adapt these tools rather than reproduce them, which is why each is credited "after" its maker. None of the tools are mine, and it's not a complete set. Bring your own into the story.</p>
+        <p>These posters and worksheets are shared under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution-NonCommercial-ShareAlike 4.0<span class="sr-only"> (opens in new tab)</span></a>. You can print, share and adapt them, with credit, not for sale, and with any adapted versions shared on the same terms. The Hautū Waka diagram stays with its creators and isn't covered by this licence. The tools themselves belong to the makers credited above.</p>
+    </div>
+
+</div>
+
+<script>
+// Report content height to the host page so the iframe can fit its content.
+(function () {
+    if (window.parent === window) return;
+    var box = document.querySelector('.container');
+    var last = 0;
+    function report() {
+        var h = Math.ceil(box.getBoundingClientRect().height) + 8;
+        if (h !== last) {
+            last = h;
+            window.parent.postMessage({ type: 'hw-embed-height', page: 'resources', height: h }, '*');
+        }
+    }
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(report).observe(box);
+    }
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    report();
+})();
+</script>
+</body>
+</html>

@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hautū Waka — Navigating Complexity</title>
+    <title>Hautū Waka — Wayfinding in Complexity</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <!--
+      Hautū Waka, interactive diagram for reflexiv.co/artefact (October 2026).
+      Diagram: Roimata Taniwha-Paoo and Ayla Hoeta, Auckland Co-design Lab, under the guidance of Matua Rereata Makiha.
+      Reflection questions: Baruk Jacob (same wording as page two of the Hautū Waka poster).
+      Phase spellings: Whakariterite, Te Rapunga, Te Kitenga, Te Whāinga, Te Whiwhinga, Te Rawenga.
+    -->
     <style>
         :root {
             --bg-main: #FAFAFA;
@@ -57,121 +63,80 @@
             display: block;
         }
 
+        .diagram-credit {
+            max-width: 1200px;
+            margin: 8px auto 0;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
         /* Hotspots */
         .hotspot {
             position: absolute;
+            border-radius: 50%;
             cursor: pointer;
+            transition: box-shadow 0.2s ease, background 0.2s ease;
             background: transparent;
         }
 
-        /* Circular glow lives on ::before so the full rectangle stays clickable,
-           including the label corners and the + marker */
-        .hotspot::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            transition: box-shadow 0.2s ease, background 0.2s ease;
-            pointer-events: none;
-        }
-
-        .hotspot:hover::before {
+        .hotspot:hover {
             box-shadow: 0 0 0 4px var(--teal-light), 0 0 20px rgba(26, 122, 140, 0.3);
             background: rgba(26, 122, 140, 0.05);
         }
 
         .hotspot:focus {
             outline: none;
-        }
-
-        .hotspot:focus::before {
             box-shadow: 0 0 0 4px var(--teal);
         }
 
         /* Hotspot positions */
-        /* Manual alignment aid: uncomment the rule below to see every
-           hotspot boundary on the live page. Adjust each hotspot's
-           left/top/width/height percentages until it sits where you want,
-           then re-comment or delete this rule.
-
-        .hotspot { outline: 2px dashed red; }
-        */
-
         .hotspot-whakariterite {
-            left: 6.5%;
-            top: 7.5%;
-            width: 17%;
-            height: 31%;
+            left: 8.7%;
+            top: 20.0%;
+            width: 14.3%;
+            height: 20.2%;
         }
 
         .hotspot-rapunga {
-            left: 5.5%;
-            top: 50.5%;
-            width: 17%;
-            height: 31%;
+            left: 7.7%;
+            top: 51.0%;
+            width: 14.3%;
+            height: 20.2%;
         }
 
         .hotspot-kitenga {
             left: 28.2%;
-            top: 42%;
-            width: 13.5%;
-            height: 24%;
+            top: 46.3%;
+            width: 11.6%;
+            height: 16.4%;
+        }
+
+        .hotspot-kitenga-2 {
+            left: 36.7%;
+            top: 56.9%;
+            width: 11.6%;
+            height: 16.4%;
         }
 
         .hotspot-whainga {
-            left: 41.5%;
-            top: 16%;
-            width: 16%;
-            height: 29%;
+            left: 40.5%;
+            top: 28.0%;
+            width: 14.0%;
+            height: 19.8%;
         }
 
         .hotspot-whiwhinga {
-            left: 52.1%;
-            top: 43%;
-            width: 16.4%;
-            height: 29%;
+            left: 50.1%;
+            top: 47.2%;
+            width: 14.3%;
+            height: 20.2%;
         }
 
         .hotspot-rawenga {
-            left: 77.95%;
-            top: 28.6%;
-            width: 16.5%;
-            height: 30%;
-        }
-
-
-        /* Instruction line */
-        .instruction {
-            max-width: 1200px;
-            margin: 0 auto 12px;
-            font-size: 15px;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        /* Visible affordance marker on each hotspot */
-        .hotspot::after {
-            content: "+";
-            position: absolute;
-            bottom: 4px;
-            left: 9px;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: var(--teal);
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 26px;
-            text-align: center;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .hotspot:hover::after,
-        .hotspot:focus::after {
-            background: var(--teal-dark);
-            transform: scale(1.15);
+            left: 75.9%;
+            top: 35.4%;
+            width: 14.3%;
+            height: 20.2%;
         }
 
         /* Backdrop */
@@ -252,10 +217,6 @@
             stroke: var(--text-secondary);
         }
 
-        .panel-title:focus {
-            outline: none;
-        }
-
         .panel-title {
             font-size: 26px;
             font-weight: 600;
@@ -321,22 +282,6 @@
             margin-bottom: 0;
         }
 
-        /* Tool tags (non-clickable) */
-        .tool-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tool-tag {
-            display: inline-block;
-            font-size: 14px;
-            color: var(--teal);
-            padding: 6px 12px;
-            background: var(--teal-light);
-            border-radius: 4px;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -371,41 +316,44 @@
 
 <!-- Main content -->
 <div class="container">
-    <p class="instruction">Select any phase to explore it</p>
     <div class="diagram-container">
-        <img src="HautuWakaProcess.png" alt="Hautū Waka Process Diagram">
-        
+        <img src="hautu-waka-diagram.jpg" width="2400" height="1697" alt="Hautū Waka, wayfinding in complexity: six phases arranged as a voyage, from Whakariterite (prepare for the journey) and Te Rapunga (venture into the unknown), through a cycle of Te Kitenga (sight tohu), Te Whāinga (make decisions based on tohu) and Te Whiwhinga (do the do), to Te Rawenga (celebrate, reflect, acknowledge tohu). Based on work by Roimata Taniwha-Paoo and Ayla Hoeta, under the guidance of Matua Rereata Makiha.">
+
         <!-- Hotspots -->
-        <div class="hotspot hotspot-whakariterite" role="button" tabindex="0" 
-             onclick="showStage('whakariterite')" 
+        <div class="hotspot hotspot-whakariterite" tabindex="0" role="button"
+             onclick="showStage('whakariterite')"
              onkeydown="handleKeydown(event, 'whakariterite')"
-             aria-label="Whakariterite, prepare for the journey, opens details"></div>
-        
-        <div class="hotspot hotspot-rapunga" role="button" tabindex="0" 
-             onclick="showStage('rapunga')" 
+             aria-label="Whakariterite - Prepare for the journey"></div>
+
+        <div class="hotspot hotspot-rapunga" tabindex="0" role="button"
+             onclick="showStage('rapunga')"
              onkeydown="handleKeydown(event, 'rapunga')"
-             aria-label="Te Rāpunga, venture into the unknown, opens details"></div>
-        
-        <div class="hotspot hotspot-kitenga" role="button" tabindex="0" 
-             onclick="showStage('kitenga')" 
+             aria-label="Te Rapunga - Venture into the unknown"></div>
+
+        <div class="hotspot hotspot-kitenga" tabindex="0" role="button"
+             onclick="showStage('kitenga')"
              onkeydown="handleKeydown(event, 'kitenga')"
-             aria-label="Te Kitenga, sight tohu, opens details"></div>
-        
-        <div class="hotspot hotspot-whainga" role="button" tabindex="0" 
-             onclick="showStage('whainga')" 
+             aria-label="Te Kitenga - Sight tohu"></div>
+
+        <div class="hotspot hotspot-kitenga-2" tabindex="-1" aria-hidden="true"
+             onclick="showStage('kitenga')"></div>
+
+        <div class="hotspot hotspot-whainga" tabindex="0" role="button"
+             onclick="showStage('whainga')"
              onkeydown="handleKeydown(event, 'whainga')"
-             aria-label="Te Whāinga, make decisions based on tohu, opens details"></div>
-        
-        <div class="hotspot hotspot-whiwhinga" role="button" tabindex="0" 
-             onclick="showStage('whiwhinga')" 
+             aria-label="Te Whāinga - Make decisions based on tohu"></div>
+
+        <div class="hotspot hotspot-whiwhinga" tabindex="0" role="button"
+             onclick="showStage('whiwhinga')"
              onkeydown="handleKeydown(event, 'whiwhinga')"
-             aria-label="Te Whiwhinga, do the do, opens details"></div>
-        
-        <div class="hotspot hotspot-rawenga" role="button" tabindex="0" 
-             onclick="showStage('rawenga')" 
+             aria-label="Te Whiwhinga - Do the do"></div>
+
+        <div class="hotspot hotspot-rawenga" tabindex="0" role="button"
+             onclick="showStage('rawenga')"
              onkeydown="handleKeydown(event, 'rawenga')"
-             aria-label="Te Rāwenga, the good place, opens details"></div>
+             aria-label="Te Rawenga - Celebrate, reflect, acknowledge tohu"></div>
     </div>
+    <p class="diagram-credit">Select any phase to explore it. Reflection questions by Baruk Jacob.</p>
 </div>
 
 <!-- Backdrop -->
@@ -419,7 +367,7 @@
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         </button>
-        <h2 class="panel-title" id="panelTitle" lang="mi" tabindex="-1"></h2>
+        <h2 class="panel-title" id="panelTitle"></h2>
         <div class="panel-subtitle" id="panelSubtitle"></div>
     </div>
     <div class="panel-content" id="panelContent"></div>
@@ -432,90 +380,81 @@ const stages = {
         id: 'whakariterite',
         name: 'Whakariterite',
         subtitle: 'Prepare for the journey',
-        asStage: 'Define the journey\'s purpose. Determine who comes and who stays behind. Gather what you\'ll need — physically, mentally, spiritually. Set up <span lang="mi">Te Rāwenga</span> (the good place) by deciding what experience you want, not just where you\'re going.',
+        asStage: 'Define the journey\'s purpose. Determine who comes and who stays behind. Gather what you\'ll need — physically, mentally, spiritually. Set up Te Rawenga (the good place) by deciding what experience you want, not just where you\'re going.',
         asState: 'A mode of ongoing readiness. You return here when conditions demand reassessment — when the crew needs to change, when purpose has drifted, when you\'ve been at sea long enough to forget why you left.',
         questions: [
             'What is the purpose of this journey?',
-            'Who needs to come, and who needs to stay off?',
-            'What will we need — and what must we leave behind?'
-        ],
-        tools: ['Te Whare Tapa Whā', 'Emotional Culture Deck', 'Theory of Change', 'PESTLE', 'Two Loops Model']
+            'What will the good place be like when we get there?',
+            'Who needs to come on this journey, and who needs to stay off?',
+            'What will we need on this journey, and what must we leave behind?'
+        ]
     },
     rapunga: {
         id: 'rapunga',
-        name: 'Te Rāpunga',
+        name: 'Te Rapunga',
         subtitle: 'Venture into the unknown',
         asStage: 'Set off into uncertainty. Name what you\'re afraid of and what excites you. Move from preparation into active searching with your whole being — not just your analytical mind.',
-        asState: 'The experience of being in the unknown. You return here whenever you face unfamiliar territory, whenever the familiar signposts disappear, whenever you need to ask again: what are we afraid of? Sometimes the <span lang="mi">moana</span> is wild; sometimes it\'s flat and you\'re not moving. Both are <span lang="mi">Te Rāpunga</span>.',
+        asState: 'The experience of being in the unknown. You return here whenever you face unfamiliar territory, whenever the familiar signposts disappear, whenever you need to ask again: what are we afraid of? Sometimes the moana is wild; sometimes it\'s flat and you\'re not moving. Both are Te Rapunga.',
         questions: [
             'What are we excited about?',
             'What are we afraid of?',
-            'What opportunities emerge from that fear?'
-        ],
-        tools: ['Emotional Culture Deck', 'More Than Words', 'Deeper Questions', 'Te Whare Tapa Whā']
+            'What opportunities emerge out of that fear?'
+        ]
     },
     kitenga: {
         id: 'kitenga',
         name: 'Te Kitenga',
         subtitle: 'Sight tohu',
         asStage: 'Look for signs. Identify where you\'re looking and what you\'re seeing. Triangulate — a single data point means nothing; you need convergent signals from multiple sources.',
-        asState: 'A mode of heightened attention and pattern recognition. You can be here while also being in <span lang="mi">Te Rāpunga</span>. You\'re not acting yet — you\'re reading conditions, noticing what the environment, the organisation, or the situation is telling you. Stillness to see clearly.',
+        asState: 'A mode of heightened attention and pattern recognition. You can be here while also being in Te Rapunga. You\'re not acting yet — you\'re reading conditions, noticing what the environment, the organisation, or the situation is telling you. Stillness to see clearly.',
         questions: [
-            'Where are we looking for signs?',
-            'What signs are we seeing?',
-            'What patterns are forming across multiple sources?'
-        ],
-        tools: ['6 Conditions of Systems Change', 'PESTLE', 'More Than Words', 'Reflexiv', '6 Thinking Hats']
+            'Where are we looking for tohu (signs)?',
+            'What tohu are we seeing?',
+            'What are we feeling, and what might that be telling us?'
+        ]
     },
     whainga: {
         id: 'whainga',
         name: 'Te Whāinga',
         subtitle: 'Make decisions based on tohu',
         asStage: 'Assess the signs you\'ve gathered. Decide: push through, go around, or return? What risks can you afford? What can you not? Commit to a direction based on what you\'re seeing, not a predetermined plan.',
-        asState: 'A decision point you can enter at any time. None of the choices are right or wrong — they\'re responses to conditions. You might cycle through multiple <span lang="mi">Te Whāinga</span> moments in a single journey as new tohu emerge.',
+        asState: 'A decision point you can enter at any time. None of the choices are right or wrong — they\'re responses to conditions. You might cycle through multiple Te Whāinga moments in a single journey as new tohu emerge.',
         questions: [
-            'What decisions do we need to make, based on the signs?',
-            'What risks can we afford to take? What can we not?',
-            'Do we push through, go around, or return?'
-        ],
-        tools: ['6 Thinking Hats', 'DVFE', 'Theory of Change', 'Emotional Culture Deck']
+            'What decisions do we need to take, based on the tohu?',
+            'What risks can we afford to take? What can we not?'
+        ]
     },
     whiwhinga: {
         id: 'whiwhinga',
         name: 'Te Whiwhinga',
         subtitle: 'Do the do',
         asStage: 'Execute. Grasp what you can take hold of. Assign who does what, by when, with what support. Move from analysis to committed action.',
-        asState: 'The mode of committed engagement. <span lang="mi">Tūwhitia te hopo, mairangitia te angitū</span> — feel the fear and do it anyway. You\'re grappling with the work, making mistakes, correcting as you go. Action in a dancing landscape, not execution of a fixed plan.',
+        asState: 'The mode of committed engagement. Tūwhitia te hopo, mairangitia te angitū — feel the fear and do it anyway. You\'re grappling with the work, making mistakes, correcting as you go. Action in a dancing landscape, not execution of a fixed plan.',
         questions: [
-            'Who needs to do what, and by when?',
+            'Who needs to do what, by when?',
             'What help might they need?',
-            'What can we grasp and take hold of right now?'
-        ],
-        tools: ['Te Whare Tapa Whā', 'Reflexiv', 'Emotional Culture Deck']
+            'What new tohu is the doing showing us?'
+        ]
     },
     rawenga: {
         id: 'rawenga',
-        name: 'Te Rāwenga',
-        subtitle: 'The good place',
+        name: 'Te Rawenga',
+        subtitle: 'Celebrate, reflect, acknowledge tohu',
         asStage: 'Arrive. Reflect on the journey. Celebrate what was achieved. Acknowledge the people and tohu who helped. Ask: what can we gift to others to help their future journeys?',
-        asState: 'A mode of assessment and reflection. Is this the good place? You might arrive at your goal and realise it\'s not good enough. You might not reach your goal but find yourself somewhere that is. <span lang="mi">Te Rāwenga</span> isn\'t about hitting targets — it\'s about recognising when you\'ve arrived somewhere worth stopping.',
+        asState: 'A mode of assessment and reflection. Is this the good place? You might arrive at your goal and realise it\'s not good enough. You might not reach your goal but find yourself somewhere that is. Te Rawenga isn\'t about hitting targets — it\'s about recognising when you\'ve arrived somewhere worth stopping.',
         questions: [
-            'How will we know we\'ve arrived at the good place?',
-            'How will we celebrate, reflect, and acknowledge those who helped?',
-            'What can we gift to others to help their future journeys?'
-        ],
-        tools: ['Project Funeral', 'Reflexiv', 'Pixar Story Spine', 'Two Loops Model', 'Deeper Questions']
+            'Have we reached the good place we described when we set out?',
+            'How will we celebrate and reflect?',
+            'Who, and which tohu, do we need to acknowledge?'
+        ]
     }
 };
 
 // Functions
-let lastOpener = null;
-
 function showStage(stageId) {
     const stage = stages[stageId];
     if (!stage) return;
 
-    lastOpener = document.querySelector('.hotspot-' + stageId);
     renderStagePanel(stage);
     openPanel();
 }
@@ -523,9 +462,9 @@ function showStage(stageId) {
 function renderStagePanel(stage) {
     document.getElementById('panelTitle').textContent = stage.name;
     document.getElementById('panelSubtitle').textContent = stage.subtitle;
-    
+
     let html = '';
-    
+
     // As a stage
     html += `
         <div class="panel-section">
@@ -533,7 +472,7 @@ function renderStagePanel(stage) {
             <div class="panel-text"><p>${stage.asStage}</p></div>
         </div>
     `;
-    
+
     // As a state
     html += `
         <div class="panel-section">
@@ -541,7 +480,7 @@ function renderStagePanel(stage) {
             <div class="panel-text"><p>${stage.asState}</p></div>
         </div>
     `;
-    
+
     // Reflection questions
     html += `
         <div class="panel-section">
@@ -553,17 +492,15 @@ function renderStagePanel(stage) {
             </div>
         </div>
     `;
-    
-    // Tools (as static tags, not clickable)
+
+    // Tools: every tool can be used in every phase, so point to the tools section
     html += `
         <div class="panel-section">
             <div class="panel-section-title">Tools</div>
-            <div class="tool-list">
-                ${stage.tools.map(tool => `<span class="tool-tag"${/[āēīōū]|Whare/.test(tool) ? ' lang="mi"' : ''}>${tool}</span>`).join('')}
-            </div>
+            <div class="panel-text"><p>Any of the nine tools can help here. Tools for Wayfinding, further down the page, shows how each one can be used in ${stage.name}.</p></div>
         </div>
     `;
-    
+
     document.getElementById('panelContent').innerHTML = html;
 }
 
@@ -571,51 +508,13 @@ function openPanel() {
     document.getElementById('backdrop').classList.add('active');
     document.getElementById('panel').classList.add('active');
     document.body.style.overflow = 'hidden';
-    // Move focus into the dialog, starting at the title
-    document.getElementById('panelTitle').focus();
 }
 
 function closePanel() {
     document.getElementById('backdrop').classList.remove('active');
     document.getElementById('panel').classList.remove('active');
     document.body.style.overflow = '';
-    // Return focus to the hotspot that opened the panel
-    if (lastOpener) {
-        lastOpener.focus();
-        lastOpener = null;
-    }
 }
-
-// Trap Tab within the panel while it is open
-document.addEventListener('keydown', function(event) {
-    if (event.key !== 'Tab') return;
-    const panel = document.getElementById('panel');
-    if (!panel.classList.contains('active')) return;
-
-    const focusables = panel.querySelectorAll(
-        'button, [href], [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusables.length === 0) return;
-
-    const first = focusables[0];
-    const last = focusables[focusables.length - 1];
-    const title = document.getElementById('panelTitle');
-
-    if (event.shiftKey) {
-        if (document.activeElement === first || document.activeElement === title) {
-            event.preventDefault();
-            last.focus();
-        }
-    } else {
-        if (document.activeElement === last) {
-            event.preventDefault();
-            first.focus();
-        } else if (!panel.contains(document.activeElement)) {
-            event.preventDefault();
-            first.focus();
-        }
-    }
-});
 
 function handleKeydown(event, stageId) {
     if (event.key === 'Enter' || event.key === ' ') {
